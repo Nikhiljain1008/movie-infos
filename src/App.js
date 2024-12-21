@@ -1,24 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./Pages/Home";
 import MovieDetails from "./Pages/MovieDetails";
 import SearchResults from "./Pages/SearchResults";
-//import Favorites from "./pages/Favorites";
-//import NotFound from "./pages/NotFound";
+import "./App.css"; // Import global styles
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
   return (
     <Router>
-      {/* Global Navbar - visible on all pages */}
-      <Navbar />
-
-      {/* Main app content controlled by routes */}
-      <Routes>
-        <Route path="/" element={<Home />} /> {/* Homepage - trending movies */}
-        <Route path="/movie/:id" element={<MovieDetails />} /> {/* Movie details */}
-        <Route path="/search" element={<SearchResults />} /> {/* Search results */}
-      </Routes>
+      <div className={isDarkMode ? "dark-mode" : "light-mode"}>
+        {/* Pass toggleTheme and isDarkMode as props */}
+        <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/search" element={<SearchResults />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

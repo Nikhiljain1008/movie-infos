@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getTrendingMovies } from "../api";
-import MovieCard  from "../components/MovieCard";
-
-
-
-console.log(MovieCard); // Should log a function/component
-console.log(getTrendingMovies); 
-console.log ("nikhil jain")
+import MovieCard from "../components/MovieCard";
+import './Home.css'; // Importing CSS for styling
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -19,10 +14,16 @@ function Home() {
     fetchMovies();
   }, []);
 
-    console.log(movies)
   return (
-    <div>
-      <h1>Trending Movies</h1>
+    <div className="home-page">
+      {/* Hero Section */}
+      <div className="hero">
+        <h1>Welcome to MovieStream</h1>
+        <p>Discover the most popular movies trending today!</p>
+      </div>
+
+      {/* Trending Movies Section */}
+      <h2 className="section-title">Trending Movies</h2>
       <div className="movie-grid">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />

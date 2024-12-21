@@ -1,0 +1,18 @@
+/* App.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black; /* Global background for dark mode */
+    color: white; /* Text color for dark mode */
+  }
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+  
+  .light-mode {
+    background-color: white;
+    color: black;
+  }
+  
