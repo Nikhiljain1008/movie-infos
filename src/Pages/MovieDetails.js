@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 function MovieDetails() {
   const { id } = useParams(); // Get the movie ID from the URL
   const [movie, setMovie] = useState(null);
@@ -10,7 +12,7 @@ function MovieDetails() {
   useEffect(() => {
     async function fetchMovieDetails() {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=8d47e94597e78822f3d7aaa1d2dbf7b2`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
       );
       setMovie(response.data);
     }
